@@ -1,0 +1,413 @@
+#Cola jms para la actualizacion del estado de la campaña respecto al cliente
+JNDI_QUEUE_CAMPANA;Desc=ActCampanaCF;
+JNDI_CONECTION_FACTORY;Desc=ActCampanaQueue;
+
+#Parametros Txs Genericas ATM
+#Correspondencia entre txs genericas y Bean de negocios (EJB)
+#1=Actualizacion de datos, 2=Venta Seguro Multiproteccion,3=Donaciones, 4=Anticipo de Sueldo, 5=Oferta por ATM
+#Como actualizacion de datos y Oferta por ATM funcionan con los mismos codigos de tx, solo puede estar activa
+#una de estas a la vez.
+
+#TXs Actualizacion de datos
+#0178+1016;valor=1;
+#0178+1017;valor=1;
+#0178+1018;valor=1;
+#0178+1019;valor=1;
+
+#TXs Oferta ATM
+0178+1016;valor=5;
+0178+1017;valor=5;
+0178+1018;valor=5;
+0178+1019;valor=5;
+
+
+#TXs Venta de seguros
+0178+0201;valor=2;
+0178+0202;valor=2;
+0178+0203;valor=2;
+0179-0203;valor=2;
+0178-0203;valor=2;
+
+#TXs campaña Donacion
+0178+0301;valor=3;
+0178+0302;valor=3;
+0435+0302;valor=3;
+0436-0302;valor=3;
+
+#TXs Anticipo de sueldos
+0178+0401;valor=4;
+0178+0402;valor=4;
+0178+0403;valor=4;
+
+#TXs Venta Crédito
+0178+0501;valor=6;
+0178+0502;valor=6;
+0178+0503;valor=6;
+0178+0504;valor=6;
+0178+0505;valor=6;
+
+#TXs Actualización Renta
+0178+0601;valor=7;
+0178+0602;valor=7;
+0178+0603;valor=7;
+
+#Informacion marketing 1 to 1
+datosMarketing;servicioAsociado=011;canal=235;
+
+#Asociacion entre Codigos de Campaña e implementaciones. Esta asociación se realiza con un codigo de producto que
+#se encuetra en un archivo plano asociado a la campaña (solo para campañas canal 235 ATM) 
+#Los códigos de producto los siguientes:
+#GEN=Campaña Genérica
+#ANT=Anticipo de Sueldos
+#DON=Donaciones
+#SEG=Seguro
+#ACT=Actualización de Direcciones
+#Ejm. Para la
+#campaña Venta de seguros se asocia a su implementacion de la siguiente manera:
+#SEG;implementacion=2;
+#Implementaciones disponibles:
+#  1=Actualizacion de datos, 
+#  2=Venta Seguro Multiproteccion,
+#  3=Donaciones, 
+#  4=Anticipo de Sueldo, 
+#  5=Campaña Generica
+ACT;implementacion=1;
+SEG;implementacion=2;
+DON;implementacion=3;
+ANT;implementacion=4;
+GEN;implementacion=5;
+CRE;implementacion=6;
+REN;implementacion=7;
+
+
+#ruta donde se encuentran disponibilizadas los archivos con la pantalla inicial de la campana
+ruta;valor=applications/wcorpWebApp/portalwls/administracion/marketing/campanas/;
+
+
+#Priorizacion de códigos de campaña y Bean de negocios (EJB)
+#1=Actualizacion de datos, 2=Venta Seguro Multiproteccion,3=Donaciones, 4=Anticipo de Sueldo
+prioridad;orden=4,1,2,3;
+
+
+#Mensajes SMS
+C3490;implementacion=5;
+#Donaciones Noviembre2014
+C3515;implementacion=3;
+C3543;implementacion=5;
+#Donaciones Diciembre2014
+C3570;implementacion=3;
+#Diciembre2014 ECC Virtual
+C3631;implementacion=5;
+C3632;implementacion=5;
+#Enero2015 CONSUMO
+C3765;implementacion=5;
+C3766;implementacion=5;
+C3767;implementacion=5;
+C3768;implementacion=5;
+C3769;implementacion=5;
+C3770;implementacion=5;
+C3771;implementacion=5;
+C3772;implementacion=5;
+C3773;implementacion=5;
+C3774;implementacion=5;
+C3775;implementacion=5;
+
+#Febrero2015 Pymes
+C3880;implementacion=5;
+C3881;implementacion=5;
+C3882;implementacion=5;
+#Febrero2015 Consumo Nova
+C3914;implementacion=5;
+C3915;implementacion=5;
+
+#Febrero2015 Tarjeta VISA Nova
+C3916;implementacion=5;
+
+#Febrero2015 Consumo Bci Compra Cartera 
+C3917;implementacion=5;
+
+#Febrero2015 Consumo Bci Libre Disponibilidad
+C3918;implementacion=5;
+C3919;implementacion=5;
+C3920;implementacion=5;
+C3921;implementacion=5;
+C3922;implementacion=5;
+
+#Febrero2015 Consumo Bci Compra Cartera Libre Disponibilidad 
+C3923;implementacion=5;
+C3924;implementacion=5;
+
+#Captura Celular Febrero
+C3929;implementacion=5;
+C3930;implementacion=5;
+C3931;implementacion=5;
+C3932;implementacion=5;
+C3933;implementacion=5;
+C3934;implementacion=5;
+C3935;implementacion=5;
+C3936;implementacion=5;
+C3937;implementacion=5;
+C3938;implementacion=5;
+
+#Campañas Marzo 2015
+C4047;implementacion=5;
+C4048;implementacion=5;
+C4049;implementacion=5;
+C4050;implementacion=5;
+C4051;implementacion=5;
+C4052;implementacion=5;
+C4053;implementacion=5;
+C4054;implementacion=5;
+C4055;implementacion=5;
+C4056;implementacion=5;
+C4057;implementacion=5;
+C4058;implementacion=5;
+C4059;implementacion=5;
+C4060;implementacion=5;
+C4061;implementacion=5;
+C4062;implementacion=5;
+C4063;implementacion=5;
+C4064;implementacion=5;
+C4065;implementacion=5;
+C4066;implementacion=5;
+C4067;implementacion=5;
+#Pymes Marzo 2015
+C4158;implementacion=5;
+C4159;implementacion=5;
+C4160;implementacion=5;
+C4161;implementacion=5;
+#Abril2015
+C5004266;implementacion=5;
+C5004255;implementacion=5;
+C5004256;implementacion=5;
+C5004257;implementacion=5;
+C5004258;implementacion=5;
+C5004259;implementacion=5;
+C5004260;implementacion=5;
+C5004261;implementacion=5;
+C5004262;implementacion=5;
+C5004263;implementacion=5;
+C5004264;implementacion=5;
+C5004265;implementacion=5;
+C5004276;implementacion=5;
+C5004277;implementacion=5;
+C5004278;implementacion=5;
+C5004279;implementacion=5;
+C5004280;implementacion=5;
+C5004281;implementacion=5;
+C5004282;implementacion=5;
+C5004283;implementacion=5;
+C5004284;implementacion=5;
+C5004285;implementacion=5;
+C5004327;implementacion=5;
+#Mayo2015
+C5004419;implementacion=5;
+C5004420;implementacion=5;
+C5004421;implementacion=5;
+C5004422;implementacion=5;
+C5004471;implementacion=5;
+C5004449;implementacion=5;
+C5004450;implementacion=5;
+C5004451;implementacion=5;
+C5004452;implementacion=5;
+C5004453;implementacion=5;
+C5004454;implementacion=5;
+C5004455;implementacion=5;
+C5004456;implementacion=5;
+C5004457;implementacion=5;
+C5004458;implementacion=5;
+C5004459;implementacion=5;
+C5004460;implementacion=5;
+C5004461;implementacion=5;
+C5004462;implementacion=5;
+C5004463;implementacion=5;
+C5004464;implementacion=5;
+C5004465;implementacion=5;
+C5004466;implementacion=5;
+C5004467;implementacion=5;
+C5004468;implementacion=5;
+C5004469;implementacion=5;
+#2da Mayo
+C5004552;implementacion=5;
+C5004553;implementacion=5;
+C5004470;implementacion=5;
+C5004584;implementacion=5;
+
+
+
+#DESGLOSE MENSAJERIA REDBANC
+#CABECERA
+REDBANC-CAB-FILLER_NODEFINIDO;ini=2;largo=3;
+REDBANC-CAB-PROTOCOL_HEADER;ini=5;largo=4;
+REDBANC-CAB-MESSAGE_TYPE_CODE;ini=9;largo=2;
+#==============================================
+#CUERPO TIPO TX <MESSAGE_TYPE_CODE=TR>
+#==============================================
+REDBANC-TR-SOURCE_FI_NUMBER;ini=11;largo=4;
+REDBANC-TR-SOURCE_TERM_NBR;ini=15;largo=5;
+REDBANC-TR-SOURCE_SEQ_NUMBER;ini=20;largo=6;
+REDBANC-TR-MESSAGE_SEQ_NUMBER;ini=26;largo=4;
+REDBANC-TR-TRANSACTION_CODE;ini=30;largo=4;
+REDBANC-TR-TRANSACTION_SIGN;ini=34;largo=1;
+#==============================================
+REDBANC-TR-SOURCE_TRML_TYPE;ini=35;largo=1;
+REDBANC-TR-SOURCE_TRML_SUBTIPO;ini=36;largo=1;
+REDBANC-TR-SOURCE_TRML_CRCTDIS;ini=37;largo=2;
+REDBANC-TR-SOURCE_DATE;ini=39;largo=6;
+REDBANC-TR-SOURCE_TIME;ini=45;largo=6;
+REDBANC-TR-SOURCE_BUSINESS_DATE;ini=51;largo=6;
+REDBANC-TR-SOURCE_ABA_NUMBER;ini=57;largo=10;
+REDBANC-TR-SOURCE_BRANCH_NUMBER;ini=67;largo=4;
+REDBANC-TR-SOURCE_RECEIPT_NUMBER;ini=71;largo=8;
+REDBANC-TR-SOURCE_PASSTHRU_FIELD;ini=79;largo=32;
+REDBANC-TR-HOST2_REG_E_DATA;ini=111;largo=50;
+REDBANC-TR-FORCE_POST_INDICATOR;ini=161;largo=1;
+REDBANC-TR-REVERSAL_INDICATOR;ini=162;largo=1;
+REDBANC-TR-TRANS_ACCOUNT_NUMBER;ini=163;largo=12;
+REDBANC-TR-TRANSACTION_AMOUNT;ini=175;largo=13;
+REDBANC-TR-TRANSACTION_AMOUNT_SIGN;ini=188;largo=1;
+REDBANC-TR-AUTH_FI_NBR;ini=189;largo=4;
+REDBANC-TR-HOST_BUSINESS_DATE;ini=193;largo=6;
+REDBANC-TR-STANDIN_AUTH_TYPE;ini=199;largo=1;
+REDBANC-TR-STANDIN_AUTH_METHOD;ini=200;largo=1;
+REDBANC-TR-STANDIN_RESULT_CODE;ini=201;largo=4;
+REDBANC-TR-TRACK_2_DATA;ini=205;largo=40;
+REDBANC-TR-CARD_APPL_CODE;ini=245;largo=2;
+REDBANC-TR-CARD_MEMBER_NBR;ini=247;largo=4;
+#==============================================
+REDBANC-TR-COMPLEMENTARY_DATA;ini=251;largo=25;
+#==============================================
+REDBANC-TR-CMPL_F38_MONTO_USS;ini=276;largo=9;
+REDBANC-TR-CMPL_F38_FEC_TIPO_CAMBIO;ini=285;largo=4;
+REDBANC-TR-CMPL_F38_TIPO_CAMBIO;ini=289;largo=8;
+REDBANC-TR-CMPL_F38_COD_MDA_ORIG;ini=297;largo=3;
+REDBANC-TR-CMPL_F38_FILLER;ini=300;largo=26;
+#==============================================
+REDBANC-TR-FOP43_TG_COD_TX;ini=326;largo=4;
+REDBANC-TR-FOP43_TG_FILLER;ini=330;largo=1;
+REDBANC-TR-FOP43_TG_DISPENSADO;ini=331;largo=1;
+REDBANC-TR-FOP43_TG_CON_SOBRE;ini=332;largo=1;
+REDBANC-TR-FOP43_TG_CON_TARJETA;ini=333;largo=1;
+REDBANC-TR-FOP43_TG_PORC_RET;ini=334;largo=3;
+REDBANC-TR-FOP43_TG_DATOS;ini=337;largo=486;
+==============================================
+REDBANC-TR-PROTOCOL_TRAILER;ini=823;largo=4;
+
+estructuraRespuesta;TR=REDBANC-TC;XR=REDBANC-XC;
+
+#############################################
+#RESPUESTA REDBANC TX <MESSAGE_TYPE_CODE=TR>
+#############################################
+REDBANC-TC-PROTOCOL_HEADER;largo=8;valor=001CCRED;
+REDBANC-TC-MESSAGE_TYPE_CODE;largo=2;valor=TC;
+#==============================================
+REDBANC-TC-SOURCE_FI_NUMBER;largo=4;valor=;
+REDBANC-TC-SOURCE_TERM_NBR;largo=5;valor=;
+REDBANC-TC-SOURCE_SEQ_NUMBER;largo=6;valor=;
+REDBANC-TC-MESSAGE_SEQ_NUMBER;largo=4;valor=;
+REDBANC-TC-TRANSACTION_CODE;largo=4;valor=;
+REDBANC-TC-TRANSACTION_SIGN;largo=1;valor=;
+REDBANC-TC-CABECERA;orden=REDBANC-TC-PROTOCOL_HEADER,REDBANC-TC-MESSAGE_TYPE_CODE,SOURCE_FI_NUMBER,SOURCE_TERM_NBR,SOURCE_SEQ_NUMBER,MESSAGE_SEQ_NUMBER,TRANSACTION_CODE,TRANSACTION_SIGN;
+#==============================================
+REDBANC-TC-ACCT_1_INFO_FLAG;largo=5;valor=;
+REDBANC-TC-DATA_INFO_FLAG;largo=1;valor=;
+REDBANC-TC-ACCT_1_NBR;largo=12;valor=000000000000;
+REDBANC-TC-ACCT_1_AVAIL_BALANCE;largo=13;valor=0000000000000;
+REDBANC-TC-ACCT_1_AVAIL_BALANCE_SIGN;largo=1;valor=+;
+REDBANC-TC-ACCT_1_CURR_BALANCE;largo=13;valor=0000000000000;
+REDBANC-TC-ACCT_1_CURR_BALANCE_SIGN;largo=1;valor=+;
+REDBANC-TC-ACCT_1_APPL_CODE;largo=2;valor=00;
+REDBANC-TC-ACCT_1_LEDG_BALANCE;largo=13;valor=0000000000000;
+REDBANC-TC-ACCT_1_LEDG_BALANCE_SIGN;largo=1;valor=+;
+REDBANC-TC-HOST_PASSTHRU_FIELD;largo=32;valor=;
+REDBANC-TC-FIELD_OPT44_03;largo=857;valor=;
+REDBANC-TC-CUERPO;orden=ACCT_1_INFO_FLAG,DATA_INFO_FLAG,ACCT_1_NBR,ACCT_1_AVAIL_BALANCE,ACCT_1_AVAIL_BALANCE_SIGN,ACCT_1_CURR_BALANCE,ACCT_1_CURR_BALANCE_SIGN,ACCT_1_APPL_CODE,ACCT_1_LEDG_BALANCE,ACCT_1_LEDG_BALANCE_SIGN,HOST_PASSTHRU_FIELD,FIELD_OPT44_03,REDBANC-TC-PROTOCOL_TRAILER;
+REDBANC-TC-PROTOCOL_TRAILER;largo=4;valor=DERC;
+
+#==============================================
+#CUERPO TIPO TX <MESSAGE_TYPE_CODE=XR>
+#==============================================
+REDBANC-XR-SOURCE_FI_NUMBER;ini=11;largo=4;
+REDBANC-XR-SOURCE_TERM_NBR;ini=15;largo=5;
+REDBANC-XR-SOURCE_SEQ_NUMBER;ini=20;largo=6;
+REDBANC-XR-MESSAGE_SEQ_NUMBER;ini=26;largo=4;
+REDBANC-XR-TRANSACTION_CODE;ini=30;largo=4;
+REDBANC-XR-TRANSACTION_SIGN;ini=34;largo=1;
+#==============================================
+REDBANC-XR-SOURCE_TRML_TYPE;ini=35;largo=1;
+REDBANC-XR-SOURCE_TRML_SUBTIPO;ini=36;largo=1;
+REDBANC-XR-SOURCE_TRML_CRCTDIS;ini=37;largo=2;
+REDBANC-XR-SOURCE_DATE;ini=39;largo=6;
+REDBANC-XR-SOURCE_TIME;ini=45;largo=6;
+REDBANC-XR-SOURCE_BUSINESS_DATE;ini=51;largo=6;
+REDBANC-XR-SOURCE_ABA_NUMBER;ini=57;largo=10;
+REDBANC-XR-SOURCE_BRANCH_NUMBER;ini=67;largo=4;
+REDBANC-XR-SOURCE_RECEIPT_NUMBER;ini=71;largo=8;
+REDBANC-XR-SOURCE_PASSTHRU_FIELD;ini=79;largo=32;
+REDBANC-XR-HOST2_REG_E_DATA;ini=111;largo=50;
+REDBANC-XR-FORCE_POST_INDICATOR;ini=161;largo=1;
+REDBANC-XR-REVERSAL_INDICATOR;ini=162;largo=1;
+REDBANC-XR-TRANS_ACCOUNT_NUMBER;ini=163;largo=12;
+REDBANC-XR-TRANSACTION_AMOUNT;ini=175;largo=13;
+REDBANC-XR-TRANSACTION_AMOUNT_SIGN;ini=188;largo=1;
+REDBANC-XR-AUTH_FI_NBR;ini=189;largo=4;
+REDBANC-XR-HOST_BUSINESS_DATE;ini=193;largo=6;
+REDBANC-XR-STANDIN_AUTH_TYPE;ini=199;largo=1;
+REDBANC-XR-STANDIN_AUTH_METHOD;ini=200;largo=1;
+REDBANC-XR-STANDIN_RESULT_CODE;ini=201;largo=4;
+REDBANC-XR-TRACK_2_DATA;ini=205;largo=40;
+REDBANC-XR-CARD_APPL_CODE;ini=245;largo=2;
+REDBANC-XR-CARD_MEMBER_NBR;ini=247;largo=4;
+REDBANC-XR-FINAL_AMOUNT;ini=251;largo=13;
+REDBANC-XR-FINAL_AMOUNT_SIGN;ini=264;largo=1;
+REDBANC-XR-ORIGINAL_TRAN_CODE;ini=265;largo=4;
+REDBANC-XR-ORIGINAL_TRAN_CODE_SIGN;ini=269;largo=1;
+#==============================================
+REDBANC-XR-COMPLEMENTARY_DATA;ini=270;largo=25;
+#==============================================
+REDBANC-XR-CMPL_F38_MONTO_USS;ini=295;largo=9;
+REDBANC-XR-CMPL_F38_FEC_TIPO_CAMBIO;ini=304;largo=4;
+REDBANC-XR-CMPL_F38_TIPO_CAMBIO;ini=308;largo=8;
+REDBANC-XR-CMPL_F38_COD_MDA_ORIG;ini=316;largo=3;
+REDBANC-XR-CMPL_F38_FILLER;ini=319;largo=26;
+#==============================================
+REDBANC-XR-FOP43_TG_COD_TX;ini=345;largo=4;
+REDBANC-XR-FOP43_TG_FILLER;ini=349;largo=1;
+REDBANC-XR-FOP43_TG_DISPENSADO;ini=350;largo=1;
+REDBANC-XR-FOP43_TG_CON_SOBRE;ini=351;largo=1;
+REDBANC-XR-FOP43_TG_CON_TARJETA;ini=352;largo=1;
+REDBANC-XR-FOP43_TG_PORC_RET;ini=353;largo=3;
+REDBANC-XR-FOP43_TG_DATOS;ini=356;largo=486;
+#==============================================
+REDBANC-XR-PROTOCOL_TRAILER;ini=842;largo=4;
+
+#############################################
+#RESPUESTA REDBANC TX <MESSAGE_TYPE_CODE=XR>
+#############################################
+REDBANC-XC-PROTOCOL_HEADER;largo=8;valor=001CCRED;
+REDBANC-XC-MESSAGE_TYPE_CODE;largo=2;valor=XC;
+#==============================================
+REDBANC-XC-SOURCE_FI_NUMBER;largo=4;valor=;
+REDBANC-XC-SOURCE_TERM_NBR;largo=5;valor=;
+REDBANC-XC-SOURCE_SEQ_NUMBER;largo=6;valor=;
+REDBANC-XC-MESSAGE_SEQ_NUMBER;largo=4;valor=;
+REDBANC-XC-TRANSACTION_CODE;largo=4;valor=;
+REDBANC-XC-TRANSACTION_SIGN;largo=1;valor=;
+REDBANC-XC-CABECERA;orden=REDBANC-XC-PROTOCOL_HEADER,REDBANC-XC-MESSAGE_TYPE_CODE,SOURCE_FI_NUMBER,SOURCE_TERM_NBR,SOURCE_SEQ_NUMBER,MESSAGE_SEQ_NUMBER,TRANSACTION_CODE,TRANSACTION_SIGN;
+#==============================================
+REDBANC-XC-ACCT_1_INFO_FLAG;largo=5;valor=;
+REDBANC-XC-DATA_INFO_FLAG;largo=1;valor=;
+REDBANC-XC-ACCT_1_NBR;largo=12;valor=000000000000;
+REDBANC-XC-ACCT_1_AVAIL_BALANCE;largo=13;valor=0000000000000;
+REDBANC-XC-ACCT_1_AVAIL_BALANCE_SIGN;largo=1;valor=+;
+REDBANC-XC-ACCT_1_CURR_BALANCE;largo=13;valor=0000000000000;
+REDBANC-XC-ACCT_1_CURR_BALANCE_SIGN;largo=1;valor=+;
+REDBANC-XC-ACCT_1_APPL_CODE;largo=2;valor=00;
+REDBANC-XC-ACCT_1_LEDG_BALANCE;largo=13;valor=0000000000000;
+REDBANC-XC-ACCT_1_LEDG_BALANCE_SIGN;largo=1;valor=+;
+REDBANC-XC-HOST_PASSTHRU_FIELD;largo=32;valor=;
+REDBANC-XC-FIELD_OPT44_03;largo=857;valor=;
+REDBANC-XC-CUERPO;orden=ACCT_1_INFO_FLAG,DATA_INFO_FLAG,ACCT_1_NBR,ACCT_1_AVAIL_BALANCE,ACCT_1_AVAIL_BALANCE_SIGN,ACCT_1_CURR_BALANCE,ACCT_1_CURR_BALANCE_SIGN,ACCT_1_APPL_CODE,ACCT_1_LEDG_BALANCE,ACCT_1_LEDG_BALANCE_SIGN,HOST_PASSTHRU_FIELD,FIELD_OPT44_03,REDBANC-XC-PROTOCOL_TRAILER;
+REDBANC-XC-PROTOCOL_TRAILER;largo=4;valor=DERC;
+
+ordenCampos;REDBANC-TC=REDBANC-TC-CABECERA,REDBANC-TC-CUERPO;REDBANC-XC=REDBANC-XC-CABECERA,REDBANC-XC-CUERPO

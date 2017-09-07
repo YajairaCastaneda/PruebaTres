@@ -1,0 +1,38 @@
+# Pantallas para Actualización de Renta por ATM
+# ====================================================================================
+
+canalID;valor=235;
+
+codigosDeRetorno;CODIGO_EXITO=0000;
+
+0178+1016-teclaSi;valor=VALOR_TECLA_C;
+0178+1016-teclaNo;valor=VALOR_TECLA_D;
+0178+1016;tipoPantalla=03;opcionesMenu=8;lineasPantalla=16;columnasPantalla=32;
+0178+1016-menu3;opcion=C;campo=01000000;dato=SI;
+0178+1016-menu4;opcion=D;campo=01000000;dato=NO;
+
+0178+1016-linea2;contenido=ESTIMADO CLIENTE LO INVITAMOS;columnaInicio=2;
+0178+1016-linea3;contenido=A ACTUALIZAR SU RENTA EN;columnaInicio=4;
+0178+1016-linea4;contenido=NUESTROS REGISTROS;columnaInicio=7;
+0178+1016-linea13;contenido=SI;columnaInicio=28;
+0178+1016-linea15;contenido=NO;columnaInicio=28; 
+
+
+
+
+0178+0601;tipoPantalla=02;totalDatos=3;InsScr=00000;
+0178+0601-dato1;contenido=GRACIAS POR SU TIEMPO;tipo=D;columnaInicio=3;
+0178+0601-dato2;contenido=;tipo=D;columnaInicio=24;
+0178+0601-dato3;contenido=TRANSACCION 0601;tipo=J;columnaInicio=4;
+
+
+
+0178+0602;tipoPantalla=02;totalDatos=3;InsScr=00000;
+0178+0602-dato1;contenido=GRACIAS POR SU TIEMPO;tipo=D;columnaInicio=3;
+0178+0602-dato2;contenido=;tipo=D;columnaInicio=24;
+0178+0602-dato3;contenido=TRANSACCION 0602;tipo=J;columnaInicio=4;
+
+
+cola;destino=jms.connection.renta.ActRentaQueue;factory=jms.connection.renta.Factory;
+
+errorGeneral;cod=ERROR;Desc=Error general al actualizar la renta.;

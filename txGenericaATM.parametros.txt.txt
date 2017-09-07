@@ -1,0 +1,52 @@
+
+Esta tabla contiene los parámetros utilizados por la aplicación de campañas txs genericas 
+por ATM.
+La aplicación consiste en mostrar la oferta al cliente cuando inserta su tarjeta en el 
+cajero.
+
+Cola jms para la actualizacion del estado de la campaña respecto al cliente
+---------------------------------------------------------------------------
+
+Aqui se define la cola en la cual se actualizará el estado de la campaña
+dependiendo de la respuesta del cliente.
+
+
+Informacion marketing 1 to 1
+-----------------------------
+
+Estos datos son los que se utilizan para rescatar las ofertas especificas para el servicio
+y canal de atm.
+
+
+Correspondencia entre códigos de campaña y Bean de negocios (EJB)
+------------------------------------------------------------------
+
+Esta asociación se utiliza para dirigir la campaña a la lógica de negocio que le corresponde.
+Ejm. Si la campaña N es de actualización de datos, le corresponde el valor 1 para que lo 
+procese la implementación de actualización de datos. El código de campaña se obtiene del 
+administrador al momento de crear la campaña.
+
+DESGLOSE MENSAJERIA REDBANC
+----------------------------
+
+Aqui se define la estructura del mensaje que entra desde redbanc. También se define la 
+estructura de respuesta. Permite parsear el mensaje para rescatar los datos necesarios
+para presentar las campañas genericas.
+
+
+[REGISTRODEVERSIONES]
+==========================================
+
+. 14/12/2011 Andrés Morán Ortiz  (SEnTRA): version inicial.
+. 14/09/2012 Andrés Morán Ortiz  (SEnTRA): Se agrega las configuraciones necesarias para la
+aplicación de Oferta por ATM, la cual utiliza el mismo código de tx que la campaña de actualización
+de datos. Además, a partir de este proyecto las distintas campañas serán rescatadas desde el administrador
+de campañas de marketing, por lo que es necesario asociar a la campaña creada en el administrador
+su código de implementación específico.
+. 14/05/2014 Andrés Morán Ortiz  (SEnTRA): Se modifica la forma de asociar la campaña  a la implementación, desde ahora
+se realiza mediante un código de campaña (GEN, ANT, DON, SEG, ACT) que vendrá en un archivo plano asociado a la campaña.
+. 26/06/2015 Pedro Carmona Escobar (SEnTRA) - Renato Oportus (Ing. Soft. BCI): se incorporan las definiciones de las transacción
+                           relacionadas a la Venta de Crédito. Además, se define implementación para el tipo de campaña 'CRE'.
+. 01/08/2016 Pedro Carmona Escobar (SEnTRA) - Sergio Bravo (Ing. Soft. BCI): se incorporan las definiciones de las transacción
+                           relacionadas a la Actualización de Renta. Además, se define implementación para el tipo de campaña 'REN'.
+==========================================

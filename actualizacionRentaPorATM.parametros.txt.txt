@@ -1,0 +1,29 @@
+
+Esta tabla contiene los parámetros utilizados por la aplicación de campañas Actualización de Renta por ATM.
+
+canalID
+~~~~~~~
+Llave que define el id de canal ATM.
+
+
+codigosDeRetorno
+~~~~~~~~~~~~~~~~
+Llave que define los valores de retorno.
+
+
+cola
+~~~~
+Llave que contiene informacion de la cola JMS.
+
+
+errorGeneral
+~~~~~~~~~~~~
+Llave que contiene la información de código y glosa de un error general para la actualziación de la renta.
+
+
+[REGISTRODEVERSIONES]
+==========================================
+
+. 21/07/2016 Pedro Carmona Escobar (SEnTRA) - Sergio Bravo (Ing. Soft. BCI): version inicial.
+
+==========================================
